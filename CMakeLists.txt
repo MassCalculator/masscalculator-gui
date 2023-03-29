@@ -1,8 +1,51 @@
-project(MassCalculatorGUI)
+cmake_minimum_required(VERSION 3.10...3.15)
+project(masscalculator-gui
+        VERSION 0.1
+        DESCRIPTION "masscalculator-gui is the interface for the users for 
+                    libmasscalculator"
+        LANGUAGES CXX
+)
 
-set(SRC_DIR ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/src)
-set(FORM_DIR ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/form)
-set(PIC_DIR ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/picture)
+# Include the Conan CMake integration
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+
+#-Wmissing-include-dirs
+set(CMAKE_CXX_FLAGS 
+    "-O2 \
+    -pthread \
+    -pedantic \
+    -Wall \
+    -Wextra \
+    -Wcast-align \
+    -Wcast-qual \
+    -Wctor-dtor-privacy \
+    -Wdisabled-optimization \
+    -Wformat=2 \
+    -Winit-self \
+    -Wlogical-op \
+    -Wmissing-declarations \
+    -Wnoexcept \
+    -Wold-style-cast \
+    -Woverloaded-virtual \
+    -Wredundant-decls \
+    -Wshadow \
+    -Wsign-conversion \
+    -Wsign-promo \
+    -Wstrict-null-sentinel \
+    -Wstrict-overflow=5 \
+    -Wswitch-default \
+    -Wundef \
+    -Werror \
+    -Wno-unused"
+)
+
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+set(FORM_DIR ${CMAKE_SOURCE_DIR}/form)
+set(PIC_DIR ${CMAKE_SOURCE_DIR}/picture)
 
 # System dependencies
 #find_package(OpenGL REQUIRED)
