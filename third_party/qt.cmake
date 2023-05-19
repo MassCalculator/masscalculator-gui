@@ -5,7 +5,8 @@ set(QT_REQUIRED_VERSION 5.15.8)
 # @todo(jimmyhalimi): Update the list for required components.
 set(QT_REQUIRED_COMPONENTS
   Core
-  Multimedia
+  Gui
+  Network
   Qml
   Quick
   Widgets

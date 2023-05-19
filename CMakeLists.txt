@@ -26,6 +26,11 @@ set(MASSCALCULATOR_GUI_MAJOR ${PROJECT_VERSION_MAJOR})
 set(MASSCALCULATOR_GUI_MINOR ${PROJECT_VERSION_MINOR})
 set(MASSCALCULATOR_GUI_PATCH ${PROJECT_VERSION_PATCH})
 
+# @todo(jimmyhalimi): Add a description
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
 ################################################################################
 #
 # Additional CMake functionalities

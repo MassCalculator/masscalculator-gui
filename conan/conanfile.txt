@@ -5,3 +5,6 @@ qt/5.15.8
 [generators]
 CMakeDeps
 CMakeToolchain
+
+[options]
+qt/5.15.8:qtdeclarative=True
