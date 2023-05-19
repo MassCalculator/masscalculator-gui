@@ -8,3 +8,4 @@ CMakeToolchain
 
 [options]
 qt/5.15.8:qtdeclarative=True
+qt/5.15.8:shared=True
