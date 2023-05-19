@@ -8,4 +8,6 @@ CMakeToolchain
 
 [options]
 qt/5.15.8:qtdeclarative=True
+qt/5.15.8:qtquickcontrols=True
+qt/5.15.8:qtquickcontrols2=True
 qt/5.15.8:shared=True
