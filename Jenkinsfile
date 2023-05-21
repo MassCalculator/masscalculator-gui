@@ -11,18 +11,38 @@ pipeline {
                 sh "sudo tools/installers/essentials.sh"
             }
         }
-        stage('Build') {
+        stage('Configure CMake') {
             parallel {
                 stage('Debug') {
                     steps {
-                        sh "cmake -B build/masscalculator-gui-Debug -G Ninja -DCMAKE_BUILD_TYPE=Debug"
-                        sh "cmake --build build/masscalculator-gui-Debug --config Debug"
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        // sh "cmake -B build/masscalculator-gui-Debug -G Ninja -DCMAKE_BUILD_TYPE=Debug"
+                        echo 'Configure stage (Debug) is in progress'
                     }
                 }
                 stage('Release') {
                     steps {
-                        sh "cmake -B build/masscalculator-gui-Release -G Ninja -DCMAKE_BUILD_TYPE=Release"
-                        sh "cmake --build build/masscalculator-gui-Release --config Release"
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        // sh "cmake -B build/masscalculator-gui-Release -G Ninja -DCMAKE_BUILD_TYPE=Release"
+                        echo 'Configure stage (Release) is in progress'
+                    }
+                }
+            }
+        }
+        stage('Build') {
+            parallel {
+                stage('Debug') {
+                    steps {
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        // sh "cmake --build build/masscalculator-gui-Debug --config Debug"
+                        echo 'Build stage (Debug) is in progress'
+                    }
+                }
+                stage('Release') {
+                    steps {
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        // sh "cmake --build build/masscalculator-gui-Release --config Release"
+                        echo 'Build stage (Release) is in progress'
                     }
                 }
             }
@@ -30,16 +50,16 @@ pipeline {
         stage('Test') {
             parallel {
                 stage('Debug') {
-            steps {
-                // @todo(jimmyhalimi): Update stages that are in progress.
-                echo 'Test stage (Debug) is in progress'
-            }
+                    steps {
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        echo 'Test stage (Debug) is in progress'
+                    }
                 }
                 stage('Release') {
-            steps {
-                // @todo(jimmyhalimi): Update stages that are in progress.
-                echo 'Test stage (Release) is in progress'
-            }
+                    steps {
+                        // @todo(jimmyhalimi): Update stages that are in progress.
+                        echo 'Test stage (Release) is in progress'
+                    }
                 }
             }
         }
