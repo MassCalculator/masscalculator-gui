@@ -21,11 +21,6 @@ pipeline {
                 sh "conan profile detect"
             }
         }
-        stage('Conan Config [Temporary]') {
-            steps {
-                sh "conan config set tools.system.package_manager:mode=install"
-            }
-        }
         stage('Local Conan Recipe Build [Temporary]') {
             steps {
                 dir('conan-masscalculator-core') {

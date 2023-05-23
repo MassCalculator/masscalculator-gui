@@ -28,9 +28,6 @@ jobs:
     - name: Conan Profile Detect [Temporary]
       run: conan profile detect
 
-    - name: Conan Config [Temporary]
-      run: conan config set tools.system.package_manager:mode=install
-
     - name: Local Conan Recipe Build [Temporary]
       run: conan create conan-masscalculator-core/all/ --version 0.1.0 --user masscalculator --channel stable --build missing
 
