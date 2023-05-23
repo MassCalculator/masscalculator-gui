@@ -29,7 +29,7 @@ jobs:
       run: conan profile detect
 
     - name: Conan Config [Temporary]
-      run: echo -e "[conf]\ntools.system.package_manager:mode = install\ntools.system.package_manager:sudo = True\n" > ~/.conan2/global.conf
+      run: echo -e "tools.system.package_manager:mode = install\ntools.system.package_manager:sudo = True\n" > ~/.conan2/global.conf
 
     - name: Local Conan Recipe Build [Temporary]
       run: conan create conan-masscalculator-core/all/ --version 0.1.0 --user masscalculator --channel stable --build missing
