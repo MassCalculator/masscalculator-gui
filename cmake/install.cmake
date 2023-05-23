@@ -19,3 +19,9 @@ install(
   FILES_MATCHING PATTERN "*.h*"
   PATTERN "CMakeLists.txt" EXCLUDE
 )
+
+install(
+  FILES ${CMAKE_SOURCE_DIR}/docs/assets/man/masscalculator-cli.1.gz
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_MANDIR}/man1
+  COMPONENT ${PROJECT_NAME}
+)
