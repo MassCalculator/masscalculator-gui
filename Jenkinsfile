@@ -11,6 +11,28 @@ pipeline {
                 sh "sudo tools/installers/essentials.sh"
             }
         }
+        stage('Conan Recipe Checkout [Temporary]') {
+            steps {
+                git branch: 'master', url: 'https://github.com/MassCalculator/conan-masscalculator-core.git'
+            }
+        }
+        stage('Conan Profile Detect [Temporary]') {
+            steps {
+                sh "conan profile detect"
+            }
+        }
+        stage('Conan Config [Temporary]') {
+            steps {
+                sh "conan config set tools.system.package_manager:mode=install"
+            }
+        }
+        stage('Local Conan Recipe Build [Temporary]') {
+            steps {
+                dir('conan-masscalculator-core') {
+                    sh "conan create all/ --version 0.1.0 --user masscalculator --channel stable --build missing"
+                }
+            }
+        }
         stage('Configure CMake') {
             parallel {
                 stage('Debug') {

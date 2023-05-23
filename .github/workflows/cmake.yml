@@ -19,7 +19,7 @@ jobs:
     - name: Environment setup
       run: sudo tools/installers/essentials.sh
 
-    - name: Local Conan Recipe Checkout [Temporary]
+    - name: Conan Recipe Checkout [Temporary]
       uses: actions/checkout@v2
       with:
         repository: MassCalculator/conan-masscalculator-core
@@ -27,6 +27,9 @@ jobs:
 
     - name: Conan Profile Detect [Temporary]
       run: conan profile detect
+
+    - name: Conan Config [Temporary]
+      run: conan config set tools.system.package_manager:mode=install
 
     - name: Local Conan Recipe Build [Temporary]
       run: conan create conan-masscalculator-core/all/ --version 0.1.0 --user masscalculator --channel stable --build missing
