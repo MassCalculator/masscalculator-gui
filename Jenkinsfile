@@ -21,6 +21,11 @@ pipeline {
                 sh "conan profile detect"
             }
         }
+        stage('Conan Config [Temporary]') {
+            steps {
+                sh "echo -e \"[conf]\ntools.system.package_manager:mode = install\ntools.system.package_manager:sudo = True\n\" > ~/.conan2/global.conf"
+            }
+        }
         stage('Local Conan Recipe Build [Temporary]') {
             steps {
                 dir('conan-masscalculator-core') {
