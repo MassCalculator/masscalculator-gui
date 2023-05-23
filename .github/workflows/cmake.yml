@@ -19,19 +19,31 @@ jobs:
     - name: Environment setup
       run: sudo tools/installers/essentials.sh
 
+    - name: Local Conan Recipe Checkout [Temporary]
+      uses: actions/checkout@v2
+      with:
+        repository: MassCalculator/conan-masscalculator-core
+        path: conan-masscalculator-core
+
+    - name: Conan Profile Detect [Temporary]
+      run: conan profile detect
+
+    - name: Local Conan Recipe Build [Temporary]
+      run: conan create conan-masscalculator-core/all/ --version 0.1.0 --user masscalculator --channel stable --build missing
+
     - name: Configure CMake
-      # @todo(jimmyhalimi): Update stages that are in progress.
-      # run: cmake -B ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} -G Ninja -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
-      run: echo 'Configure stage is in progress'
+      run: cmake -B ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} -G Ninja -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
 
     - name: Build
-      # @todo(jimmyhalimi): Update stages that are in progress.
-      # run: cmake --build ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} --config ${{matrix.build_type}}
-      run: echo 'Build stage is in progress'
+      run: cmake --build ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} --config ${{matrix.build_type}}
 
     - name: Run
       # @todo(jimmyhalimi): Update stages that are in progress.
       run: echo 'Run stage is in progress'
+
+    - name: Package
+      # @todo(jimmyhalimi): Update stages that are in progress.
+      run: echo 'Package stage is in progress'
 
     - name: Deploy
       # @todo(jimmyhalimi): Update stages that are in progress.

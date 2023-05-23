@@ -15,16 +15,12 @@ pipeline {
             parallel {
                 stage('Debug') {
                     steps {
-                        // @todo(jimmyhalimi): Update stages that are in progress.
-                        // sh "cmake -B build/masscalculator-gui-Debug -G Ninja -DCMAKE_BUILD_TYPE=Debug"
-                        echo 'Configure stage (Debug) is in progress'
+                        sh "cmake -B build/masscalculator-gui-Debug -G Ninja -DCMAKE_BUILD_TYPE=Debug"
                     }
                 }
                 stage('Release') {
                     steps {
-                        // @todo(jimmyhalimi): Update stages that are in progress.
-                        // sh "cmake -B build/masscalculator-gui-Release -G Ninja -DCMAKE_BUILD_TYPE=Release"
-                        echo 'Configure stage (Release) is in progress'
+                        sh "cmake -B build/masscalculator-gui-Release -G Ninja -DCMAKE_BUILD_TYPE=Release"
                     }
                 }
             }
@@ -33,32 +29,28 @@ pipeline {
             parallel {
                 stage('Debug') {
                     steps {
-                        // @todo(jimmyhalimi): Update stages that are in progress.
-                        // sh "cmake --build build/masscalculator-gui-Debug --config Debug"
-                        echo 'Build stage (Debug) is in progress'
+                        sh "cmake --build build/masscalculator-gui-Debug --config Debug"
                     }
                 }
                 stage('Release') {
                     steps {
-                        // @todo(jimmyhalimi): Update stages that are in progress.
-                        // sh "cmake --build build/masscalculator-gui-Release --config Release"
-                        echo 'Build stage (Release) is in progress'
+                        sh "cmake --build build/masscalculator-gui-Release --config Release"
                     }
                 }
             }
         }
-        stage('Test') {
+        stage('Run') {
             parallel {
                 stage('Debug') {
                     steps {
                         // @todo(jimmyhalimi): Update stages that are in progress.
-                        echo 'Test stage (Debug) is in progress'
+                        echo 'Run stage (Debug) is in progress'
                     }
                 }
                 stage('Release') {
                     steps {
                         // @todo(jimmyhalimi): Update stages that are in progress.
-                        echo 'Test stage (Release) is in progress'
+                        echo 'Run stage (Release) is in progress'
                     }
                 }
             }
