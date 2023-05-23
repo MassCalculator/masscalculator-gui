@@ -20,7 +20,7 @@ jobs:
       run: sudo tools/installers/essentials.sh
 
     - name: Conan Recipe Checkout [Temporary]
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: MassCalculator/conan-masscalculator-core
         path: conan-masscalculator-core
