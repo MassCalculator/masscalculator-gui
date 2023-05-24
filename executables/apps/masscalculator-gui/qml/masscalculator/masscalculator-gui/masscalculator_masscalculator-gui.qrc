@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/masscalculator/masscalculator-gui">
+        <file>main.qml</file>
+        <file>MainWindow.qml</file>
+    </qresource>
+</RCC>

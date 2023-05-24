@@ -1,0 +1,13 @@
+[requires]
+masscalculator-core/0.1.0@masscalculator/stable
+qt/5.15.8
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+qt/5.15.8:qtdeclarative=True
+qt/5.15.8:qtquickcontrols=True
+qt/5.15.8:qtquickcontrols2=True
+qt/5.15.8:shared=True

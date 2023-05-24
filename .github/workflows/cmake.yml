@@ -1,0 +1,66 @@
+name: CMake
+
+on:
+  push:
+  pull_request:
+    types: [closed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        build_type: [Debug, Release]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Environment setup
+      run: sudo tools/installers/essentials.sh
+
+    - name: Conan Recipe Checkout [Temporary]
+      uses: actions/checkout@v3
+      with:
+        repository: MassCalculator/conan-masscalculator-core
+        path: conan-masscalculator-core
+
+    - name: Conan Profile Detect [Temporary]
+      run: conan profile detect
+
+    - name: Conan Config [Temporary]
+      run: echo -e "tools.system.package_manager:mode = install\ntools.system.package_manager:sudo = True\n" > ~/.conan2/global.conf
+
+    - name: Local Conan Recipe Build [Temporary]
+      run: conan create conan-masscalculator-core/all/ --version 0.1.0 --user masscalculator --channel stable --build missing
+
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} -G Ninja -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build/masscalculator-gui-${{matrix.build_type}} --config ${{matrix.build_type}}
+
+    - name: Run
+      # @todo(jimmyhalimi): Update stages that are in progress.
+      run: echo 'Run stage is in progress'
+
+    - name: Package
+      # @todo(jimmyhalimi): Update stages that are in progress.
+      run: echo 'Package stage is in progress'
+
+    - name: Deploy
+      # @todo(jimmyhalimi): Update stages that are in progress.
+      run: echo 'Deploy stage is in progress'
+
+  trigger:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Send repository dispatch event
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          repository: MassCalculator/masscalculator.github.io
+          event-type: masscalculator-gui-pr-merged
+          token: ${{secrets.MASSCALCULATOR_SECRET}}
