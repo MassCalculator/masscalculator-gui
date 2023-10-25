@@ -1,5 +1,5 @@
 [requires]
-masscalculator-core/0.1.0@masscalculator/stable
+masscalculator-core/0.2.0@masscalculator/stable
 qt/5.15.8
 
 [generators]
