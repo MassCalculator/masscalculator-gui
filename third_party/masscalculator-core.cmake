@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(MASSCALCULATOR_CORE_REQUIRED_VERSION 0.1.0)
+set(MASSCALCULATOR_CORE_REQUIRED_VERSION 0.2.0)
 
 # Check that MassCalculator Core is installed in the system.
 # This call cannot fail.

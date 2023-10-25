@@ -39,7 +39,6 @@ conan_cmake_install(
   PATH_OR_REFERENCE ${CMAKE_CURRENT_SOURCE_DIR}/conan/conanfile.txt
   SETTINGS ${settings}
   BUILD missing
-  OPTIONS "tools.system.package_manager/*:mode=install"
   OUTPUT_FOLDER ${CMAKE_BINARY_DIR}
 )
 
