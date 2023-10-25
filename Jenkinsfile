@@ -11,6 +11,21 @@ pipeline {
                 sh "sudo tools/installers/essentials.sh"
             }
         }
+        stage('Conan Profile Detect [Temporary]') {
+            steps {
+                sh "conan profile detect"
+            }
+        }
+        stage('Conan Config [Temporary]') {
+            steps {
+                sh "echo -e "tools.system.package_manager:mode = install\ntools.system.package_manager:sudo = True\n" > ~/.conan2/global.conf"
+            }
+        }
+        stage('Local Conan Recipe Build [Temporary]') {
+            steps {
+                sh "conan create conan-masscalculator-core/all/ --version 0.2.0 --user masscalculator --channel stable --build missing"
+            }
+        }
         stage('Configure CMake') {
             parallel {
                 stage('Debug') {
